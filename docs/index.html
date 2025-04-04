@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MCFE – Pairs Trading</title>
+<title>Pairs Trading Project – Pairs Trading</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,9 +68,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -113,13 +114,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-pairs-trading" id="toc-what-is-pairs-trading" class="nav-link active" data-scroll-target="#what-is-pairs-trading">What is Pairs Trading?</a></li>
+  <li><a href="#why-choose-pairs-trading" id="toc-why-choose-pairs-trading" class="nav-link" data-scroll-target="#why-choose-pairs-trading">Why Choose Pairs Trading?</a></li>
+  <li><a href="#pair-stock-selection" id="toc-pair-stock-selection" class="nav-link" data-scroll-target="#pair-stock-selection">Pair Stock Selection</a></li>
+  <li><a href="#setting-trading-rules" id="toc-setting-trading-rules" class="nav-link" data-scroll-target="#setting-trading-rules">Setting Trading Rules</a></li>
+  <li><a href="#refinements-and-advanced-methods" id="toc-refinements-and-advanced-methods" class="nav-link" data-scroll-target="#refinements-and-advanced-methods">Refinements and Advanced Methods</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MCFE</h1>
+<h1 class="title">Pairs Trading Project</h1>
 </div>
 
 
@@ -136,10 +149,99 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<p><strong>Team Members</strong>: Yunkai Gao, Jiajun Huang</p>
+<hr>
+<section id="what-is-pairs-trading" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-pairs-trading">What is Pairs Trading?</h3>
+<p>Pairs trading is a market-neutral strategy that matches a long position with a short position in two historically correlated stocks. It profits from temporary mispricings while being relatively hedged against market movements.</p>
+<hr>
+</section>
+<section id="why-choose-pairs-trading" class="level3">
+<h3 class="anchored" data-anchor-id="why-choose-pairs-trading">Why Choose Pairs Trading?</h3>
+<ul>
+<li>Market neutral</li>
+<li>Statistical arbitrage</li>
+<li>Diversified and controllable risk</li>
+<li>Proven historical profitability</li>
+</ul>
+<hr>
+</section>
+<section id="pair-stock-selection" class="level3">
+<h3 class="anchored" data-anchor-id="pair-stock-selection">Pair Stock Selection</h3>
+<ul>
+<li><strong>Same industry:</strong>
+<ul>
+<li>Similar fundamentals, Business models, Financial profiles</li>
+</ul></li>
+<li><strong>Statistical method:</strong> Suppose P denotes the closing price of stock i at time t, where formation period t = 0,1,…,T
+<ul>
+<li>Calculate standardized prices for stocks</li>
+<li>Calculate SSD of the standardized prices for stocks X and Y</li>
+<li>Select pairs with minimum SSD</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="setting-trading-rules" class="level3">
+<h3 class="anchored" data-anchor-id="setting-trading-rules">Setting Trading Rules</h3>
+<ul>
+<li><strong>Calculate 𝜇 and 𝜎</strong>
+<ul>
+<li>Compute the mean and standard deviation of the standardized stock price spread during the formation period</li>
+</ul></li>
+<li><strong>Open position</strong>
+<ul>
+<li>Standardized price spread between the two stocks &lt; 𝜇−1.5𝜎 or &gt; 𝜇+1.5𝜎</li>
+</ul></li>
+<li><strong>Close position</strong>
+<ul>
+<li>If &lt; 𝜇−1.5𝜎 , close position when the Standardized price spread back to 𝜇−0.2𝜎</li>
+<li>If &gt; 𝜇+1.5𝜎 , close position when the Standardized price spread back to 𝜇+0.2𝜎</li>
+</ul></li>
+<li><strong>Stop-loss line</strong>
+<ul>
+<li>If standardized price spread &lt; 𝜇−2.5𝜎 or &gt; 𝜇+2.5𝜎 after open position, we close position to stop loss.</li>
+</ul></li>
+<li><strong>Draw Standardized Price Spread Series Chart</strong>
+<ul>
+<li>Normalized spreads, averages, opening lines, closing lines, and stop-loss lines.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="refinements-and-advanced-methods" class="level3">
+<h3 class="anchored" data-anchor-id="refinements-and-advanced-methods">Refinements and Advanced Methods</h3>
+<ul>
+<li><strong>Pair Identifier</strong>
+<ul>
+<li>Clustering: K-means, how to select hyperparam</li>
+<li>GNN: Stocks as nodes, pair relation as line, sector as subgraph</li>
+<li>Attention combined</li>
+</ul></li>
+<li><strong>Spread Construction</strong>
+<ul>
+<li>Move beyond linear spread</li>
+<li>Use multi-factor approaches (fundamentals, technical indicators)</li>
+</ul></li>
+<li><strong>Signal Generation</strong>
+<ul>
+<li>Reinforcement Learning (RL) for end-to-end decision making</li>
+<li>Ensemble learning for robustness</li>
+</ul></li>
+<li><strong>Capital Allocation</strong>
+<ul>
+<li>Multi-objective optimization</li>
+</ul></li>
+<li><strong>Dynamic portfolio</strong>
+<ul>
+<li>Rerank to fix unstable Pair relation</li>
+<li>Risk-contribution clear out</li>
+</ul></li>
+</ul>
+<hr>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

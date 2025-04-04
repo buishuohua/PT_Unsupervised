@@ -1,7 +1,80 @@
 ---
-title: "MCFE"
+title: "Pairs Trading Project"
+format: html
 ---
 
-This is a Quarto website.
+**Team Members**: Yunkai Gao, Jiajun Huang
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+---
+
+### What is Pairs Trading?
+
+Pairs trading is a market-neutral strategy that matches a long position with a short position in two historically correlated stocks. It profits from temporary mispricings while being relatively hedged against market movements.
+
+---
+
+### Why Choose Pairs Trading?
+
+- Market neutral
+- Statistical arbitrage
+- Diversified and controllable risk
+- Proven historical profitability
+
+---
+
+### Pair Stock Selection
+
+- **Same industry:**
+  - Similar fundamentals, Business models, Financial profiles
+
+- **Statistical method:**
+Suppose P denotes the closing price of stock i at time t, where formation period t = 0,1,…,T
+  - Calculate standardized prices for stocks
+  - Calculate SSD of the standardized prices for stocks X and Y
+  - Select pairs with minimum SSD
+
+---
+
+### Setting Trading Rules
+
+- **Calculate 𝜇 and 𝜎**
+  - Compute the mean and standard deviation of the standardized stock price spread during the formation period
+
+- **Open position**
+  - Standardized price spread between the two stocks < 𝜇−1.5𝜎 or > 𝜇+1.5𝜎
+
+- **Close position**
+  - If < 𝜇−1.5𝜎 , close position when the Standardized price spread back to 𝜇−0.2𝜎
+  - If > 𝜇+1.5𝜎 , close position when the Standardized price spread back to 𝜇+0.2𝜎
+
+- **Stop-loss line**
+  - If standardized price spread < 𝜇−2.5𝜎 or > 𝜇+2.5𝜎 after open position, we close position to stop loss.
+
+- **Draw Standardized Price Spread Series Chart**
+  - Normalized spreads, averages, opening lines, closing lines, and stop-loss lines.
+
+---
+
+### Refinements and Advanced Methods
+
+- **Pair Identifier**
+  - Clustering: K-means, how to select hyperparam
+  - GNN: Stocks as nodes, pair relation as line, sector as subgraph
+  - Attention combined
+
+- **Spread Construction**
+  - Move beyond linear spread
+  - Use multi-factor approaches (fundamentals, technical indicators)
+
+- **Signal Generation**
+  - Reinforcement Learning (RL) for end-to-end decision making
+  - Ensemble learning for robustness
+
+- **Capital Allocation**
+  - Multi-objective optimization
+
+- **Dynamic portfolio**
+  - Rerank to fix unstable Pair relation
+  - Risk-contribution clear out
+
+---

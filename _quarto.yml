@@ -15,3 +15,9 @@ website:
       - icon: github
         href: https://github.com/buishuohua/PT_Unsupervised
         aria-label: GitHub
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    css: styles.css
