@@ -124,6 +124,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#pair-stock-selection" id="toc-pair-stock-selection" class="nav-link" data-scroll-target="#pair-stock-selection">Pair Stock Selection</a></li>
   <li><a href="#setting-trading-rules" id="toc-setting-trading-rules" class="nav-link" data-scroll-target="#setting-trading-rules">Setting Trading Rules</a></li>
   <li><a href="#refinements-and-advanced-methods" id="toc-refinements-and-advanced-methods" class="nav-link" data-scroll-target="#refinements-and-advanced-methods">Refinements and Advanced Methods</a></li>
+  <li><a href="#data-example" id="toc-data-example" class="nav-link" data-scroll-target="#data-example">Data Example</a></li>
   </ul>
 </nav>
     </div>
@@ -168,12 +169,16 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="pair-stock-selection" class="level3">
 <h3 class="anchored" data-anchor-id="pair-stock-selection">Pair Stock Selection</h3>
-<ul>
-<li><strong>Same industry:</strong>
+<section id="same-industry" class="level5">
+<h5 class="anchored" data-anchor-id="same-industry">Same industry</h5>
 <ul>
 <li>Similar fundamentals, Business models, Financial profiles</li>
-</ul></li>
-<li><strong>Statistical method:</strong> Suppose P denotes the closing price of stock i at time t, where formation period t = 0,1,…,T
+</ul>
+</section>
+<section id="statistical-method" class="level5">
+<h5 class="anchored" data-anchor-id="statistical-method">Statistical method</h5>
+<ul>
+<li>Suppose P denotes the closing price of stock i at time t, where formation period t = 0,1,…,T
 <ul>
 <li>Calculate standardized prices for stocks</li>
 <li>Calculate SSD of the standardized prices for stocks X and Y</li>
@@ -182,63 +187,207 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <hr>
 </section>
+</section>
 <section id="setting-trading-rules" class="level3">
 <h3 class="anchored" data-anchor-id="setting-trading-rules">Setting Trading Rules</h3>
-<ul>
-<li><strong>Calculate 𝜇 and 𝜎</strong>
+<section id="calculate-𝜇-and-𝜎" class="level5">
+<h5 class="anchored" data-anchor-id="calculate-𝜇-and-𝜎">Calculate 𝜇 and 𝜎</h5>
 <ul>
 <li>Compute the mean and standard deviation of the standardized stock price spread during the formation period</li>
-</ul></li>
-<li><strong>Open position</strong>
+</ul>
+</section>
+<section id="open-position" class="level5">
+<h5 class="anchored" data-anchor-id="open-position">Open position</h5>
 <ul>
 <li>Standardized price spread between the two stocks &lt; 𝜇−1.5𝜎 or &gt; 𝜇+1.5𝜎</li>
-</ul></li>
-<li><strong>Close position</strong>
+</ul>
+</section>
+<section id="close-position" class="level5">
+<h5 class="anchored" data-anchor-id="close-position">Close position</h5>
 <ul>
 <li>If &lt; 𝜇−1.5𝜎 , close position when the Standardized price spread back to 𝜇−0.2𝜎</li>
 <li>If &gt; 𝜇+1.5𝜎 , close position when the Standardized price spread back to 𝜇+0.2𝜎</li>
-</ul></li>
-<li><strong>Stop-loss line</strong>
+</ul>
+</section>
+<section id="stop-loss-line" class="level5">
+<h5 class="anchored" data-anchor-id="stop-loss-line">Stop-loss line</h5>
 <ul>
 <li>If standardized price spread &lt; 𝜇−2.5𝜎 or &gt; 𝜇+2.5𝜎 after open position, we close position to stop loss.</li>
-</ul></li>
-<li><strong>Draw Standardized Price Spread Series Chart</strong>
+</ul>
+</section>
+<section id="draw-standardized-price-spread-series-chart" class="level5">
+<h5 class="anchored" data-anchor-id="draw-standardized-price-spread-series-chart">Draw Standardized Price Spread Series Chart</h5>
 <ul>
 <li>Normalized spreads, averages, opening lines, closing lines, and stop-loss lines.</li>
-</ul></li>
 </ul>
 <hr>
 </section>
+</section>
 <section id="refinements-and-advanced-methods" class="level3">
 <h3 class="anchored" data-anchor-id="refinements-and-advanced-methods">Refinements and Advanced Methods</h3>
-<ul>
-<li><strong>Pair Identifier</strong>
+<section id="pair-identifier" class="level5">
+<h5 class="anchored" data-anchor-id="pair-identifier">Pair Identifier</h5>
 <ul>
 <li>Clustering: K-means, how to select hyperparam</li>
 <li>GNN: Stocks as nodes, pair relation as line, sector as subgraph</li>
 <li>Attention combined</li>
-</ul></li>
-<li><strong>Spread Construction</strong>
+</ul>
+</section>
+<section id="spread-construction" class="level5">
+<h5 class="anchored" data-anchor-id="spread-construction">Spread Construction</h5>
 <ul>
 <li>Move beyond linear spread</li>
 <li>Use multi-factor approaches (fundamentals, technical indicators)</li>
-</ul></li>
-<li><strong>Signal Generation</strong>
+</ul>
+</section>
+<section id="signal-generation" class="level5">
+<h5 class="anchored" data-anchor-id="signal-generation">Signal Generation</h5>
 <ul>
 <li>Reinforcement Learning (RL) for end-to-end decision making</li>
 <li>Ensemble learning for robustness</li>
-</ul></li>
-<li><strong>Capital Allocation</strong>
+</ul>
+</section>
+<section id="capital-allocation" class="level5">
+<h5 class="anchored" data-anchor-id="capital-allocation">Capital Allocation</h5>
 <ul>
 <li>Multi-objective optimization</li>
-</ul></li>
-<li><strong>Dynamic portfolio</strong>
+</ul>
+</section>
+<section id="dynamic-portfolio" class="level5">
+<h5 class="anchored" data-anchor-id="dynamic-portfolio">Dynamic portfolio</h5>
 <ul>
 <li>Rerank to fix unstable Pair relation</li>
 <li>Risk-contribution clear out</li>
-</ul></li>
 </ul>
 <hr>
+</section>
+</section>
+<section id="data-example" class="level3">
+<h3 class="anchored" data-anchor-id="data-example">Data Example</h3>
+<ul>
+<li>We selected the 150 most traded stocks from the S&amp;P500 and made sure that each stock had ten years of trading data for our subsequent pair selection.</li>
+</ul>
+<img src="Photo/Stocks.jpg" class="img-fluid" style="display:block; margin-left:auto; margin-right:auto;;width:70.0%">
+<p style="text-align:center;">
+Stocks We Choose
+</p>
+<ul>
+<li>Here are 10 of the 150 stocks, we used one day of data as an example showing open, high, low, close, volumn.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>stock_idx</th>
+<th>date</th>
+<th>open</th>
+<th>high</th>
+<th>low</th>
+<th>close</th>
+<th>volume</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AAPL</td>
+<td>2025-04-08</td>
+<td>186.70</td>
+<td>190.34</td>
+<td>179.62</td>
+<td>187.90</td>
+<td>120859994</td>
+</tr>
+<tr class="even">
+<td>AMCR</td>
+<td>2025-04-08</td>
+<td>16.78</td>
+<td>17.22</td>
+<td>16.41</td>
+<td>17.21</td>
+<td>42828334</td>
+</tr>
+<tr class="odd">
+<td>AMD</td>
+<td>2025-04-08</td>
+<td>96.72</td>
+<td>98.66</td>
+<td>93.52</td>
+<td>95.22</td>
+<td>46283727</td>
+</tr>
+<tr class="even">
+<td>AMZN</td>
+<td>2025-04-08</td>
+<td>185.23</td>
+<td>186.93</td>
+<td>178.57</td>
+<td>183.98</td>
+<td>58888478</td>
+</tr>
+<tr class="odd">
+<td>AVGO</td>
+<td>2025-04-08</td>
+<td>167.25</td>
+<td>169.53</td>
+<td>157.89</td>
+<td>162.91</td>
+<td>53127980</td>
+</tr>
+<tr class="even">
+<td>BAC</td>
+<td>2025-04-08</td>
+<td>55.74</td>
+<td>56.23</td>
+<td>54.71</td>
+<td>55.89</td>
+<td>42930823</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>2025-04-08</td>
+<td>52.39</td>
+<td>53.64</td>
+<td>50.21</td>
+<td>52.28</td>
+<td>38929745</td>
+</tr>
+<tr class="even">
+<td>CCL</td>
+<td>2025-04-08</td>
+<td>17.45</td>
+<td>18.12</td>
+<td>16.72</td>
+<td>17.97</td>
+<td>27893145</td>
+</tr>
+<tr class="odd">
+<td>CMCSA</td>
+<td>2025-04-08</td>
+<td>40.73</td>
+<td>41.98</td>
+<td>39.22</td>
+<td>40.56</td>
+<td>35142789</td>
+</tr>
+<tr class="even">
+<td>CSCO</td>
+<td>2025-04-08</td>
+<td>52.26</td>
+<td>52.97</td>
+<td>51.69</td>
+<td>52.10</td>
+<td>29473815</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
