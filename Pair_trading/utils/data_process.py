@@ -173,7 +173,7 @@ def ema(spread: pd.Series, window_size: int = 2) -> pd.Series:
     return ema_series
 
 
-def create_sequences(stock_dfs: list, spread: pd.Series,
+def create_sequences(stock_dfs: list, spread: pd.Series, ema_window_size: int = 10,
                      seq_length: int = 3, pred_length: int = 2) -> tuple:
     """
     Create sequences of data for time series prediction.
@@ -197,7 +197,7 @@ def create_sequences(stock_dfs: list, spread: pd.Series,
 
     features_columns = ['open', 'high', 'low', 'close', 'volume']
 
-    for i in range(total_length - seq_length - pred_length + 1):
+    for i in range(total_length - seq_length - pred_length - ema_window_size+ 1):
         # Get sequences for all stocks
         stock_seqs = []
         for stock_df in stock_dfs:
@@ -211,7 +211,8 @@ def create_sequences(stock_dfs: list, spread: pd.Series,
         stocks_seq = np.stack(stock_seqs)
 
         # Get future spread values for labeling
-        future_spread = spread.iloc[i+seq_length:i+seq_length+pred_length]
+        future_spread = spread.iloc[i+seq_length +
+                                    ema_window_size:i+seq_length + ema_window_size + pred_length]
 
         # Calculate label based on future trend
         current_mean = seq_spread.mean()

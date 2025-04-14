@@ -67,6 +67,7 @@ class Dataset_1min(Dataset):
             pair_sequences, spread_sequences, labels = create_sequences(
                 stock_dfs=stocks_df,
                 spread=spread_ema,
+                ema_window_size=self.ema_window_size,
                 seq_length=seq_length,
                 pred_length=pred_length
             )

@@ -30,7 +30,7 @@ class DataConfig:
     test_end_year: int = 2025
 
     # Sequence parameters
-    seq_length: int = 3
+    seq_length: int = 20
     pred_length: int = 2
 
     # Trading pairs configuration
@@ -39,8 +39,8 @@ class DataConfig:
         ('GOOGL', 'META', 'AMZN')
     )
     hedge_ratios: Tuple[Tuple[float, ...], ...] = (
-        (0.8,),
-        (0.7, 0.5)
+        (1.0,),
+        (1.0, 1.0)
     )
 
     # Technical indicators

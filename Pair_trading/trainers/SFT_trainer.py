@@ -16,8 +16,8 @@ from .base_trainer import BaseTrainer
 
 
 class SFTTrainer(BaseTrainer):
-    def __init__(self, model, optimizer, criterion, device, model_save_dir):
-        super().__init__(model, optimizer, criterion, device, model_save_dir)
+    def __init__(self, model, criterion, optimizer, scheduler, device, save_freq: int = 100):
+        super().__init__(model, criterion, optimizer, scheduler, device, save_freq)
 
         class_weights = torch.tensor([1.0, 1.0, 1.0]).to(device)
         self.criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
@@ -202,10 +202,10 @@ class SFTTrainer(BaseTrainer):
             # Learning rate scheduling
             self.scheduler.step(val_loss)
 
-            # Logging
-            self.logger.info(f'Epoch {epoch+1}/{config.num_epochs}:')
-            self.logger.info(f'Training Loss: {train_loss:.4f}')
-            self.logger.info(f'Validation Loss: {val_loss:.4f}')
+            if epoch // config.log_interval == 0:
+                self.logger.info(f'Epoch {epoch+1}/{config.num_epochs}:')
+                self.logger.info(f'Training Loss: {train_loss:.4f}')
+                self.logger.info(f'Validation Loss: {val_loss:.4f}')
 
             # Log metrics to TensorBoard
             self.log_metrics(epoch, train_loss, val_loss, train_accuracy, val_accuracy,

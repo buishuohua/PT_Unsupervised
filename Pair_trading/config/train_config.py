@@ -34,6 +34,7 @@ class TrainConfig:
     # Learning rate scheduler
     scheduler_patience: int = 50
     scheduler_factor: float = 0.5
+    mode: str = 'min'
     min_lr: float = 1e-6
 
     # Early stopping
@@ -47,7 +48,7 @@ class TrainConfig:
     save_freq: int = 10
 
     # Logging and checkpoints
-    log_interval: int = 100
+    log_interval: int = 10
     experiment_dir: str = 'experiments'
     runs_dir: str = "runs"
     experiment_name: str = f"{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}"
@@ -55,7 +56,7 @@ class TrainConfig:
     log_dir: str = "logs"
 
     # Continue training settings
-    continue_training: bool = True
+    continue_training: bool = False
     # Format: "YYYYMMDD_HHMMSS" or None
     continue_from_experiment: Optional[str] = None
 

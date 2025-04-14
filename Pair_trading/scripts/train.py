@@ -113,7 +113,7 @@ def main():
     )
     scheduler = ReduceLROnPlateau(
         optimizer,
-        mode='min',
+        mode=train_config.mode,
         factor=train_config.scheduler_factor,
         patience=train_config.scheduler_patience,
         min_lr=train_config.min_lr
