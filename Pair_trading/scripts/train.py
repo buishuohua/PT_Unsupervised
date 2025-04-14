@@ -22,29 +22,9 @@ from config.data_config import DataConfig
 from config.train_config import TrainConfig
 from config.model_config import ModelConfig
 from utils.dataset import Dataset_1min, DataLoader_1min
+from utils.seed import set_seed
 from trainers.SFT_trainer import SFTTrainer
 from models.SFT import StockFusionTransformer
-
-# def setup_directories(config):
-#     """Setup necessary directories for the experiment"""
-#     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-#     experiment_dir = config.experiment_dir
-#     experiment_dir = os.path.join(base_dir, experiment_dir)
-#     os.makedirs(experiment_dir, exist_ok=True)
-
-#     runs_dir = os.path.join(experiment_dir, config.runs_dir)
-#     os.makedirs(runs_dir, exist_ok=True)
-
-#     specific_experiment_dir = os.path.join(runs_dir, config.experiment_name)
-#     os.makedirs(specific_experiment_dir, exist_ok=True)
-
-#     save_dir = os.path.join(specific_experiment_dir, config.model_save_dir)
-#     log_dir = os.path.join(specific_experiment_dir, config.log_dir)
-
-#     os.makedirs(save_dir, exist_ok=True)
-#     os.makedirs(log_dir, exist_ok=True)
-
-#     return save_dir, log_dir
 
 
 def read_data(config):
@@ -70,6 +50,8 @@ def main():
     # Load configurations
     model_config = ModelConfig()
     train_config = TrainConfig()
+
+    set_seed(train_config.seed)
     data_config = DataConfig()
 
     # Setup directories

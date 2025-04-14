@@ -83,12 +83,11 @@ def align_stock_timestamps(data_dir: str, interval: str = "1min", begin_year: in
 def spread_pairs(df: pd.DataFrame, stocks: tuple, hedge_ratios: tuple = None) -> tuple:
     """
     Calculate spread between multiple stocks and ensure index alignment.
-    
+
     Args:
         df: DataFrame containing stock data
         stocks: Tuple of stock tickers (e.g., ('AAPL', 'MSFT', 'GOOGL'))
         hedge_ratios: Tuple of hedge ratios for each stock after the first one (default: None, all 1.0)
-    
     Returns:
         tuple: (list_of_stock_dfs, spread_series) with aligned indices
     """
@@ -235,21 +234,7 @@ def create_sequences(stock_dfs: list, spread: pd.Series,
 
 
 if __name__ == "__main__":
-    # Example usage
     data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
     aligned_data = align_stock_timestamps(data_dir, interval="1min", begin_year=2016, end_year=2020)
     aligned_data2 = align_stock_timestamps(data_dir, interval="1min", begin_year=2021, end_year=2022)
     aligned_data3 = align_stock_timestamps(data_dir, interval="1min", begin_year=2023, end_year=2025)
-    # aligned_data = pd.read_csv(os.path.join(data_dir, "processed", "Aligned_1min_data.csv"))
-
-    # Example with three stocks
-    # stocks = ("AAPL", "MSFT", "GOOGL")
-    # hedge_ratios = (0.8, 0.6)  # Ratios for MSFT and GOOGL relative to AAPL
-
-    # stock_dfs, spread = spread_pairs(
-    #     aligned_data,
-    #     stocks=stocks,
-    #     hedge_ratios=hedge_ratios
-    # )
-
-    # spread_ema = ema(spread, window_size=20)

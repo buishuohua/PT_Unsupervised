@@ -9,6 +9,7 @@
 
 import pandas as pd
 import numpy as np
+import random
 import os
 import torch
 from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler, BatchSampler
@@ -27,7 +28,8 @@ class Dataset_1min(Dataset):
                  pred_length: int = 1,
                  pairs: Tuple[Tuple[str, ...], ...] = (),
                  ema_window_size: int = 10,
-                 hedge_ratios: Tuple[Tuple[float, ...], ...] = ()
+                 hedge_ratios: Tuple[Tuple[float, ...], ...] = (),
+                 seed: int = 42
                  ):
         """
         Initialize dataset for pairs trading.
@@ -48,6 +50,10 @@ class Dataset_1min(Dataset):
         self.ema_window_size = ema_window_size
         self.hedge_ratios = hedge_ratios
         self.processed_data = {}
+        self.seed = seed
+        np.random.seed(self.seed)
+        random.seed(self.seed)
+        torch.manual_seed(self.seed)
 
         # Process each pair/group
         for pair, hedge_ratio in zip(self.pairs, self.hedge_ratios):
@@ -232,7 +238,7 @@ if __name__ == "__main__":
 
     # Create dataloader
     batch_size = 256
-    dataloader = Dataloader_1min(
+    dataloader = DataLoader_1min(
         dataset=dataset,
         batch_size=batch_size,
         shuffle=True,

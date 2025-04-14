@@ -16,8 +16,11 @@ from .base_trainer import BaseTrainer
 
 
 class SFTTrainer(BaseTrainer):
-    def __init__(self, model, criterion, optimizer, scheduler, device, save_freq: int = 100):
-        super().__init__(model, criterion, optimizer, scheduler, device, save_freq)
+    def __init__(self, model, optimizer, criterion, device, model_save_dir):
+        super().__init__(model, optimizer, criterion, device, model_save_dir)
+
+        class_weights = torch.tensor([1.0, 1.0, 1.0]).to(device)
+        self.criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
 
     def train_epoch(self, dataloader):
         self.model.train()
